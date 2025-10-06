@@ -1,4 +1,4 @@
-# Penjelasan setiap langkah praktikum beserta screenshot
+# Penjelasan setiap langkah praktikum beserta screenshot & PertanyaanTugas
 
 **1.Membuat Dokumen HTML Dasar**
 
@@ -269,6 +269,26 @@ Output:
 
 
 
+# Pertanyaan Dan tugas
+
+**Membuat Form dengan Dropdown Menu dan Listbox Multiple Selection**
+**Deskripsi**
+Tugas ini bertujuan untuk membuat sebuah form HTML yang memiliki:
+- Dropdown menu untuk memilih program studi
+- Listbox dengan multiple selection untuk memilih bidang minat
+- Tampilan hasil input menggunkan html
+
+  Output:
+
+  <img width="796" height="809" alt="Screenshot 2025-10-06 194855" src="https://github.com/user-attachments/assets/ed9dce22-32d5-418d-b32a-d136a647094d" />
+
+
+
+  Hasil Kirim:
+  
+<img width="778" height="393" alt="Screenshot 2025-10-06 194908" src="https://github.com/user-attachments/assets/3740a833-39b8-4f77-907a-ddb70760a7d9" />
+
+  
 
 
 
