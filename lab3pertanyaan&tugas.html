@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Dropdown & Listbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f8;
+        }
+        h1 {
+            color: #197a43;
+        }
+        fieldset {
+            border: 2px solid #197a43;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #ffffff;
+            width: 400px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        }
+        legend {
+            font-weight: bold;
+            color: #197a43;
+        }
+        form p {
+            margin: 10px 0;
+        }
+        label {
+            display: inline-block;
+            width: 130px;
+            font-weight: bold;
+        }
+        select, input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #197a43;
+            border-radius: 5px;
+        }
+        select[multiple] {
+            height: 100px;
+        }
+        input[type="submit"], button {
+            background-color: #197a43;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #145e32;
+        }
+        small {
+            color: #555;
+            display: block;
+            margin-top: 4px;
+        }
+        #output {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            border: 2px solid #197a43;
+            width: 400px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Form dengan Dropdown & Listbox</h1>
+    </header>
+
+    <form id="myForm">
+        <fieldset>
+            <legend>Data Pendaftaran</legend>
+
+            <p>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" required>
+            </p>
+
+            <p>
+                <label for="prodi">Program Studi:</label>
+                <select id="prodi" name="prodi" required>
+                    <option value="">-- Pilih Program Studi --</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Sistem Informasi">Sistem Informasi</option>
+                    <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                    <option value="Teknik Elektro">Teknik Elektro</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="minat">Bidang Minat:</label><br>
+                <select id="minat" name="minat[]" multiple required>
+                    <option value="Pemrograman Web">Pemrograman Web</option>
+                    <option value="Kecerdasan Buatan">Kecerdasan Buatan</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Jaringan Komputer">Jaringan Komputer</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                </select>
+                <small>*Tahan CTRL (Windows) / CMD (Mac) untuk memilih lebih dari satu.</small>
+            </p>
+
+            <p>
+                <button type="button" onclick="tampilkanHasil()">Kirim</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <!-- Tempat menampilkan hasil -->
+    <div id="output" style="display:none;">
+        <h2>Hasil Data Pendaftaran</h2>
+        <p><strong>Nama:</strong> <span id="outNama"></span></p>
+        <p><strong>Program Studi:</strong> <span id="outProdi"></span></p>
+        <p><strong>Bidang Minat:</strong></p>
+        <ul id="outMinat"></ul>
+    </div>
+
+    <script>
+        function tampilkanHasil() {
+            // Ambil nilai dari form
+            const nama = document.getElementById('nama').value;
+            const prodi = document.getElementById('prodi').value;
+            const minatSelect = document.getElementById('minat');
+            const minatTerpilih = Array.from(minatSelect.selectedOptions).map(opt => opt.value);
+
+            // Validasi sederhana
+            if (nama === "" || prodi === "" || minatTerpilih.length === 0) {
+                alert("Mohon isi semua data terlebih dahulu!");
+                return;
+            }
+
+            // Tampilkan hasil
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('outNama').textContent = nama;
+            document.getElementById('outProdi').textContent = prodi;
+
+            // Tampilkan list bidang minat
+            const listMinat = document.getElementById('outMinat');
+            listMinat.innerHTML = ""; // kosongkan dulu
+            minatTerpilih.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                listMinat.appendChild(li);
+            });
+
+            // Scroll ke hasil
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
